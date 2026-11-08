@@ -1,0 +1,22 @@
+# Skill: Arabic Editorial Archival & Scrollytelling Design System
+- **Aesthetic Persona**: Modern Arabesque Archival meets Apple/Linear Scrollytelling. Bold, tactile, high-contrast, and culturally rooted.
+- **Color Palette**: 
+  - Background Primary: `#0D0D0C` (Obsidian / Deep Charcoal Black) — *or `#FAF7F2` (Warm Parchment) for light-mode sections*
+  - Background Elevated: `#171715` (Carbon Matte)
+  - Text Primary: `#F5F2EB` (Crisp Alabaster on dark) / `#121211` (Ink Black on light)
+  - Text Muted: `#8C867B` (Warm Ash)
+  - Accent Primary: `#E05A2B` (Burnt Editorial Orange / Saffron)
+  - Accent Secondary: `#1A4D2E` (Heritage Cedar / Deep Emerald Green)
+- **Typography & RTL Rules**:
+  - Directionality: Explicit `dir="rtl"` support using logical CSS properties (`ms-*`, `me-*`, `ps-*`, `pe-*`, `text-start`).
+  - Headings & Display (Arabic): Expressive Naskh/Kufic Display (`Amiri`, `Aref Ruqaa`, or `Readex Pro` bold), generous line-height (`leading-normal` to `leading-relaxed` to prevent diacritic/ashkal clipping), **zero letter-spacing** (`tracking-normal` — never use `tracking-tight` or `tracking-widest` on Arabic script as it breaks ligatures).
+  - UI & Body (Arabic): Clean Modern Kufic/Sans (`IBM Plex Sans Arabic`, `Cairo`, or `Tajawal`), `leading-loose` for optimal readability.
+  - Technical/Dates/Coordinates (Numerals & Latin): Monospace (`JetBrains Mono`), `text-xs`, using tabular numerals (`tabular-nums`) for years and archival index codes.
+- **Motion Rules (Framer Motion)**:
+  - Never use bouncy/cartoonish springs. Use smooth, damped physics: `transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}`.
+  - Use scroll-linked animations (`useScroll`, `useTransform`) for timeline progress lines and subtle image parallax.
+  - RTL Motion Awareness: Reverse horizontal entrance/exit vectors (`x: 24` instead of `x: -24`) so reveals flow naturally from right to left.
+- **Guardrails**:
+  - Never apply CSS `letter-spacing` (`tracking-*`) or `uppercase` utilities to Arabic text elements.
+  - No neon cyberpunk orange or generic SaaS gradients; keep oranges warm/terracotta and greens deep/organic.
+  - Always use `next/image` with `sizes` props and subtle `ring-1 ring-white/10` (dark mode) or `ring-black/5` (light mode) borders on all archival photos.
