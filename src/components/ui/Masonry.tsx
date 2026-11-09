@@ -265,7 +265,7 @@ export const Masonry = ({
   revealOnScroll = true,
   hoverEffect = 'lift',
   focusOnHover = true,
-  captions = 'hover',
+  captions = 'none',
   parallax = 0,
   lightbox = true,
   draggable = true,
@@ -857,7 +857,7 @@ export const Masonry = ({
   const frameFor = (item: MasonryItem) => {
     const aspect = aspectOf(item, measured);
     const pad = window.innerWidth < 640 ? 16 : 72;
-    const room = item.title || item.description || item.url ? 64 : 0;
+    const room = 64; // Reserved space for "زيارة المصدر" button
     const maxW = Math.max(40, window.innerWidth - pad * 2);
     const maxH = Math.max(40, window.innerHeight - pad * 2 - room);
     let w = maxW;
@@ -1011,7 +1011,7 @@ export const Masonry = ({
       {(layout?.tiles ?? []).map((tile, index) => {
         const { item } = tile;
         const id = tile.id;
-        const label = item.title || item.alt || undefined;
+        const label = 'صورة أرشيفية';
         const shared = {
           className: CARD,
           'data-card': '',
@@ -1027,7 +1027,7 @@ export const Masonry = ({
               <img
                 className={IMAGE}
                 src={item.img}
-                alt={item.alt ?? item.title ?? ''}
+                alt="صورة أرشيفية"
                 draggable={false}
                 decoding="async"
                 data-loaded={loaded.current.has(id) ? '' : undefined}
@@ -1107,30 +1107,30 @@ export const Masonry = ({
             className={BOX}
             role="dialog"
             aria-modal="true"
-            aria-label={openItem.title || openItem.alt || 'صورة أرشيفية'}
+            aria-label="معاينة الصورة"
           >
             <div className={BOX_BACKDROP} data-box-backdrop="" onClick={closeBox} />
             <img
               className={BOX_IMAGE}
               data-box-image=""
               src={openItem.img}
-              alt={openItem.alt ?? openItem.title ?? ''}
+              alt="صورة أرشيفية"
               draggable={false}
               style={{ width: box.width, height: box.height, left: box.left, top: box.top, borderRadius: 8 }}
               onClick={closeBox}
             />
-            {box.room > 0 && (
-              <div className={BOX_CAPTION} data-box-fade="" style={{ top: box.top + box.height + 18 }}>
-                {openItem.title && <span className="font-bold text-[#F5F2EB]">{openItem.title}</span>}
-                {openItem.description && <span className={BOX_MUTED}>{openItem.description}</span>}
-                {openItem.url && (
-                  <a href={openItem.url} target="_blank" rel="noopener noreferrer">
-                    <span>فتح المصدر</span>
-                    <ArrowUpRight className="w-4 h-4 text-[#f09d1a]" />
-                  </a>
-                )}
-              </div>
-            )}
+            {/* Lightbox Footer: ONLY "زيارة المصدر" button, ZERO text */}
+            <div className={BOX_CAPTION} data-box-fade="" style={{ top: box.top + box.height + 16 }}>
+              <a
+                href={openItem.url || openItem.img}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-white/10 hover:bg-[#f09d1a] hover:text-[#0D0D0C] text-[#f09d1a] border border-[#f09d1a]/50 text-xs sm:text-sm font-sans font-bold shadow-2xl backdrop-blur-md transition-all duration-150 active:scale-95"
+              >
+                <span>زيارة المصدر</span>
+                <ArrowUpRight className="w-4 h-4" />
+              </a>
+            </div>
             <button
               type="button"
               className={BOX_CLOSE}

@@ -43,8 +43,8 @@ export function YearGalleryClient({
             <Image
               src="/logo.png"
               alt="الشعار"
-              width={60}
-              height={60}
+              width={120}
+              height={120}
               className="h-6 sm:h-7 w-auto object-contain "
               priority
             />
@@ -106,7 +106,7 @@ export function YearGalleryClient({
             blurToFocus={true}
             hoverEffect="lift"
             focusOnHover={true}
-            captions="hover"
+            captions="none"
             lightbox={true}
             draggable={true}
             className="w-full"

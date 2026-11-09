@@ -48,64 +48,7 @@ export function TimelineStation({
 
       {/* Main Archival Station Card */}
       <div className="bg-[#171715]/90 hover:bg-[#171715] border border-white/[0.08] hover:border-white/[0.18] rounded-2xl p-6 sm:p-10 transition-all duration-300 shadow-xl backdrop-blur-sm">
-        {/* Metadata Header: Year, Date, Location */}
-        <div className="flex flex-wrap items-center justify-between gap-4 mb-5 border-b border-white/[0.06] pb-4">
-          <div className="flex flex-wrap items-center gap-3 sm:gap-4">
-            <span className="font-mono text-3xl sm:text-4xl font-extrabold tabular-nums text-[#E05A2B]">
-              {event.year}
-            </span>
-
-            <span className="text-white/20">•</span>
-
-            <div className="inline-flex items-center gap-1.5 text-xs text-[#8C867B] font-mono">
-              <Calendar className="w-3.5 h-3.5 text-[#E05A2B]" />
-              <span>{event.date}</span>
-            </div>
-
-            <span className="text-white/20">•</span>
-
-            <div className="inline-flex items-center gap-1.5 text-xs text-[#8C867B]">
-              <MapPin className="w-3.5 h-3.5 text-[#1A4D2E]" />
-              <span>{event.location}</span>
-            </div>
-          </div>
-
-          <span className="font-mono text-[11px] px-2.5 py-1 rounded bg-white/[0.04] border border-white/[0.08] text-[#8C867B]">
-            سجل #{event.id}
-          </span>
-        </div>
-
-        {/* Title & Subtitle */}
-        <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold tracking-normal leading-snug text-[#F5F2EB] mb-3">
-          {event.title}
-        </h2>
-        <h3 className="text-base sm:text-lg text-[#E05A2B] font-sans font-medium tracking-normal mb-5">
-          {event.subtitle}
-        </h3>
-
-        {/* Narrative Archival Description */}
-        <p className="text-sm sm:text-base text-[#8C867B] leading-loose tracking-normal mb-8 max-w-4xl font-light">
-          {event.description}
-        </p>
-
-        {/* Key Archival Metrics / Stats */}
-        {event.stats && event.stats.length > 0 && (
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-3.5 mb-8">
-            {event.stats.map((stat, sIdx) => (
-              <div
-                key={sIdx}
-                className="p-4 rounded-xl bg-black/45 border border-white/[0.06] hover:border-white/[0.12] transition-colors"
-              >
-                <div className="font-mono text-xl sm:text-2xl font-bold text-[#F5F2EB] tabular-nums mb-1">
-                  {stat.value}
-                </div>
-                <div className="text-xs text-[#8C867B] font-sans">
-                  {stat.label}
-                </div>
-              </div>
-            ))}
-          </div>
-        )}
+        
 
         {/* Visual Showcase: Primary Cover + Fan-out Interactive Previews */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">

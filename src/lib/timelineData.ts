@@ -79,8 +79,6 @@ export async function getYearGalleryWithR2Images(
     const masonryItems: MasonryItem[] = allR2Images.map((img, idx) => ({
       id: img.id,
       img: img.url,
-      title: img.title,
-      description: `${baseMeta.location} • وثيقة رقم ${idx + 1} (${img.filename})`,
       url: img.url,
       // Natural varied dimensions to create a rich Masonry layout
       width: 800 + ((idx * 3) % 4) * 150,
